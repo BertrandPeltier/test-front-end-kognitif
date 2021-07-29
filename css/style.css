@@ -10,6 +10,11 @@
 .leftside-navbar {
     background-color: #fff;
     width: 20%;
+    padding-left: 1rem;
+}
+
+#kognitif-logo {
+    width: 60%;
 }
 
 .rightside-navbar {
@@ -40,11 +45,11 @@ i {
     font-size: 4rem !important;
 }
 a {
-    color: #000;
+    color: #FFF;
 }
 a:hover {
-    color: #FFF;
-    transition: all 0.8s ease-out;
+    color: #000;
+    transition: all 0.5s ease-out;
 }
 
 .middle-content {
