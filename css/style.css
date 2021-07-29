@@ -26,6 +26,21 @@ i {
     padding-left: 1rem;
 }
 
+.leftside-item {
+    display: block;
+}
+
+.settings-block {
+    display: flex;
+}
+
+.settings-block div:nth-child(2) {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #kognitif-logo {
     width: 60%;
 }
@@ -52,7 +67,7 @@ i {
 .rightside-header {
     text-align: center;
 }
-.rightside-menu {
+.rightside-menus {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
