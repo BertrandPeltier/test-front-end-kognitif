@@ -5,8 +5,12 @@
 /*
 * Common rules
 */
-.leftside-navbar, .rightside-navabar, .middle-content {
+.leftside-navbar, .rightside-navbar, .middle-content {
     height: 100%;
+}
+
+.leftside-navbar, .rightside-navbar {
+
 }
 
 i {
@@ -26,6 +30,11 @@ i {
     width: 60%;
 }
 
+.bg-test {
+    background-color: red;
+    padding: 5px;
+}
+
 /*
 * Right side Navbar
 */
@@ -34,23 +43,26 @@ i {
     width: 5%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center; */
 }
 
 .rightside-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
 }
-
-.rightside-com, .rightside-tool {
+.rightside-menu {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
 }
 
 .rightside-item {
     color: #FFF;
+    display: block;
 }
 
 .rightside-item:hover {
@@ -63,10 +75,7 @@ i {
 }
 
 
-.bg-test {
-    background-color: red;
-    padding: 5px;
-}
+
 
 /*
 * Middle content
