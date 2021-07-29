@@ -2,11 +2,20 @@
     height: 100vh;
     display: flex;
 }
-
+/*
+* Common rules
+*/
 .leftside-navbar, .rightside-navabar, .middle-content {
     height: 100%;
 }
 
+i {
+    font-size: 2.5rem !important;
+    margin: 0.5rem 0;
+}
+/*
+* Left side Navbar
+*/
 .leftside-navbar {
     background-color: #fff;
     width: 20%;
@@ -17,6 +26,9 @@
     width: 60%;
 }
 
+/*
+* Right side Navbar
+*/
 .rightside-navbar {
     background-color: #6B00FF;
     width: 5%;
@@ -37,21 +49,28 @@
     flex-direction: column;
 }
 
-i {
-    font-size: 2.5rem !important;
-    margin: 0.5rem 0;
-}
-.account-icon {
-    font-size: 4rem !important;
-}
-a {
+.rightside-item {
     color: #FFF;
 }
-a:hover {
+
+.rightside-item:hover {
     color: #000;
     transition: all 0.5s ease-out;
 }
 
+.account-icon {
+    font-size: 4rem !important;
+}
+
+
+.bg-test {
+    background-color: red;
+    padding: 5px;
+}
+
+/*
+* Middle content
+*/
 .middle-content {
     background-color: #E6DBFF;
     width: 75%;
