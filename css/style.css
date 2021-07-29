@@ -42,6 +42,10 @@ i {
 a {
     color: #000;
 }
+a:hover {
+    color: #FFF;
+    transition: all 0.8s ease-out;
+}
 
 .middle-content {
     background-color: #E6DBFF;
