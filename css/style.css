@@ -21,7 +21,27 @@
     justify-content: space-between;
 }
 
+.rightside-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.rightside-com, .rightside-tool {
+    display: flex;
+    flex-direction: column;
+}
+
+i {
+    font-size: 2.5rem !important;
+    margin: 0.5rem 0;
+}
+.account-icon {
+    font-size: 4rem !important;
+}
+a {
+    color: #000;
+}
 
 .middle-content {
     background-color: #E6DBFF;
