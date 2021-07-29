@@ -1,6 +1,7 @@
 .main-content {
     height: 100vh;
     display: flex;
+    font-family: sans-serif;
 }
 /*
 * Common rules
@@ -36,18 +37,20 @@ i {
 }
 
 .leftside-item {
-    display: block;
-}
-
-.settings-block {
-    display: flex;
-}
-
-.settings-block div:nth-child(2) {
-    flex-grow: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
+    color: #6E6E6E;
+    text-decoration: none;
+}
+
+.leftside-item i {
+    margin-right: 1rem;
+}
+
+.leftside-item span {
+    margin-left: -1rem;
+    flex-grow: 1;
+    text-align: center;
 }
 
 #kognitif-logo {
