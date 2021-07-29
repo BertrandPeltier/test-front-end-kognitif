@@ -43,6 +43,13 @@ i {
     text-decoration: none;
 }
 
+.leftside-item--selected {
+    font-weight: bold;
+}
+.leftside-item--selected-blue {
+    color: #6B00FF;
+}
+
 .leftside-item i {
     margin-right: 1rem;
 }
