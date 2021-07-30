@@ -6,6 +6,10 @@
 /*
 * Common rules
 */
+a {
+    text-decoration: none;
+}
+
 .leftside-navbar, .rightside-navbar, .middle-content {
     height: 100%;
 }
@@ -74,7 +78,6 @@ i {
     display: flex;
     align-items: center;
     color: #6E6E6E;
-    text-decoration: none;
 }
 
 .leftside-item--selected {
