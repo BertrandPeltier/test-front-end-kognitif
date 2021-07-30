@@ -71,9 +71,13 @@ const app = {
             app.unselectPreviousSubmenu();
             submenu.classList.remove('is-hidden');
             submenu.classList.add('is-active');
+            // Submenu top
             if (submenu.classList.contains('submenu--top')) {
                 app.handleWithTopSubmenu(submenu);
+            } else if (submenu.classList.contains('submenu--bottom')) {
+                app.handleWithBottomSubmenu(submenu);
             }
+
         }
     },
 
@@ -95,6 +99,16 @@ const app = {
             });
         });
     },
+
+    handleWithBottomSubmenu: (submenu) => {
+        const subItems = submenu.querySelectorAll('li');
+        subItems.forEach(subItem => {
+            subItem.addEventListener('click', () => {
+                subItem.firstChild.classList.remove('is-grey');
+                subItem.firstChild.classList.add('is-yellow');
+            })
+        })
+    }
 
 
 

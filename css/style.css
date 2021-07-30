@@ -19,6 +19,13 @@ a {
 }
 
 /*
+* Helpers
+*/
+.mr {
+    margin-right: 1rem;
+}
+
+/*
 * Material icons
 */
 i {
@@ -28,7 +35,6 @@ i {
 }
 
 .is-small {
-    margin-left: 1rem;
     font-size: 1rem !important;
 }
 
@@ -55,6 +61,10 @@ i {
 
 .is-darkblue {
     background-color: #4829FF;
+}
+
+.is-grey {
+    background-color: #6e6e6e9a;
 }
 
 /*
@@ -135,6 +145,7 @@ i {
 
 .submenu--bottom {
     margin-left: 3rem;
+    font-weight: bold;
 }
 
 .submenu2 li {
