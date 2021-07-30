@@ -102,8 +102,12 @@ i {
 }
 
 .sub-menu li {
-    display: none;
     line-height: 200%;
+    color: #6E6E6E;
+}
+
+.is-hidden {
+    display: none;
 }
 
 /*

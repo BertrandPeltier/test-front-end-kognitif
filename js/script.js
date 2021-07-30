@@ -15,14 +15,18 @@ const app = {
         leftsideItems.forEach(leftsideItem => {
             leftsideItem.addEventListener('click', (event) => {
                 // Reset previous selected item
-                app.unselectOtherItem();
+                app.unselectPreviousItem();
                 // Apply selected style
                 app.stylingSelectedItem(leftsideItem);
+                // Unselect previous sub-menu
+                app.unselectPreviousSubMenu();
+                // Show sub-menu
+                app.showSubMenu(leftsideItem.target);
             })
         })
     },
 
-    unselectOtherItem: () => {
+    unselectPreviousItem: () => {
         const previousSelectedItem = document.querySelector('.leftside-item--selected');
         if (previousSelectedItem) {
             previousSelectedItem.classList.remove('leftside-item--selected');
@@ -37,7 +41,22 @@ const app = {
         if (item.classList.contains('leftside-item--top')) {
             item.classList.add('leftside-item--selected-blue');
         }
+    },
+
+    unselectPreviousSubMenu: () => {
+        const previousSubMenu = document.querySelector('.is-active');
+        if (previousSubMenu) {
+            previousSubMenu.classList.add('is-hidden');
+            previousSubMenu.classList.remove('is-active');
+        }
+    },
+
+    showSubMenu: (target) => {
+        const subMenu = document.getElementById(target);
+        subMenu.classList.remove('is-hidden');
+        subMenu.classList.add('is-active');
     }
+
 };
 
 document.addEventListener('DOMContentLoaded', app.init);
