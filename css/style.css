@@ -110,6 +110,11 @@ i {
     display: none;
 }
 
+.sub-menu--selected-top {
+    background-color: #E6DBFF;
+    color: #6B00FF !important;
+}
+
 /*
 * Right side Navbar
 */

@@ -21,7 +21,22 @@ const app = {
                 // Unselect previous sub-menu
                 app.unselectPreviousSubMenu();
                 // Show sub-menu
-                app.showSubMenu(leftsideItem.target);
+                if(leftsideItem.target) {
+                    app.showSubMenu(leftsideItem.target);
+                }
+
+                //const subItems = document.querySelectorAll('.is-active li');
+                //subItems.forEach(subItem => {
+                //    subItem.addEventListener('click', () => {
+                //        const previousSubItem = document.querySelector('.sub-menu--selected-top');
+                //        if(previousSubItem) {
+                //            previousSubItem.classList.remove('sub-menu--selected-top');
+                //        }
+    //
+                //    });
+                //})
+                
+
             })
         })
     },
@@ -53,8 +68,12 @@ const app = {
 
     showSubMenu: (target) => {
         const subMenu = document.getElementById(target);
+        console.log(subMenu.querySelector('li'));
         subMenu.classList.remove('is-hidden');
         subMenu.classList.add('is-active');
+        if (subMenu.classList.contains('sub-menu--top')) {
+            subMenu.querySelector('li').classList.add('sub-menu--selected-top');
+        }
     }
 
 };
