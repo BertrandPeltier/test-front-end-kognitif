@@ -18,24 +18,10 @@ const app = {
                 app.unselectPreviousItem();
                 // Apply selected style
                 app.stylingSelectedItem(leftsideItem);
-                // Unselect previous sub-menu
-                app.unselectPreviousSubMenu();
                 // Show sub-menu
-                if(leftsideItem.target) {
-                    app.showSubMenu(leftsideItem.target);
+                if (leftsideItem.target) {
+                    app.showSubmenu(leftsideItem.target);
                 }
-                const subItems = document.querySelectorAll('.is-active li');
-                subItems.forEach(subItem => {
-                   subItem.addEventListener('click', () => {
-                       const previousSubItem = document.querySelector('.sub-menu--selected-top');
-                       if(previousSubItem) {
-                           previousSubItem.classList.remove('sub-menu--selected-top');
-                       }
-                       subItem.classList.add('sub-menu--selected-top');
-                   });
-                })
-                
-
             })
         })
     },
@@ -57,32 +43,46 @@ const app = {
         }
     },
 
-    unselectPreviousSubMenu: () => {
-        const previousSubMenu = document.querySelector('.is-active');
-        if (previousSubMenu) {
-            previousSubMenu.classList.add('is-hidden');
-            previousSubMenu.classList.remove('is-active');
+    unselectPreviousSubmenu: () => {
+        const previousSubmenu = document.querySelector('.is-active');
+        if (previousSubmenu) {
+            previousSubmenu.classList.add('is-hidden');
+            previousSubmenu.classList.remove('is-active');
         }
     },
 
-    showSubMenu: (target) => {
-        const subMenu = document.getElementById(target);
-        subMenu.classList.remove('is-hidden');
-        subMenu.classList.add('is-active');
-        if (subMenu.classList.contains('sub-menu--top')) {
-            // subMenu.querySelector('li').classList.add('sub-menu--selected-top');
-            let isSelected = false;
-            const subMenuLis = subMenu.querySelectorAll('li');
-            subMenuLis.forEach(li => {
-                if (li.classList.contains('sub-menu--selected-top')) {
-                    isSelected = true;
-                }
-            });
-            if (!isSelected) {
-                subMenuLis[0].classList.add('sub-menu--selected-top');
+    showSubmenu: (target) => {
+        const submenu = document.getElementById(target);
+        if (!submenu.classList.contains('is-active')) {
+            app.unselectPreviousSubmenu();
+            submenu.classList.remove('is-hidden');
+            submenu.classList.add('is-active');
+            if (submenu.classList.contains('submenu--top')) {
+                app.handleWithTopSubmenu(submenu);
             }
         }
-    }
+    },
+
+    handleWithTopSubmenu: (submenu) => {
+        const subItems = submenu.querySelectorAll('li');
+        const unselectOtherSubItems = (items) => {
+            items.forEach(item => {
+                if (item.classList.contains('submenu--selected-top')) {
+                    item.classList.remove('submenu--selected-top');
+                }
+            });
+        };
+        unselectOtherSubItems(subItems);
+        subItems[0].classList.add('submenu--selected-top');
+        subItems.forEach(subItem => {
+            subItem.addEventListener('click', () => {
+                unselectOtherSubItems(subItems);
+                subItem.classList.add('submenu--selected-top');
+            });
+        });
+    },
+
+
 
 };
 

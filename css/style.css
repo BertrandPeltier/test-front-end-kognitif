@@ -58,13 +58,13 @@ i {
 .leftside-navbar {
     background-color: #fff;
     width: 20%;
-    padding-left: 1rem;
     display: flex;
     flex-direction: column;
 }
 
 #kognitif-logo {
     width: 60%;
+    padding-left: 1rem;
 }
 
 .leftside-menus {
@@ -78,6 +78,7 @@ i {
     display: flex;
     align-items: center;
     color: #6E6E6E;
+    padding-left: 1rem;
 }
 
 .leftside-item--selected {
@@ -98,13 +99,13 @@ i {
     text-align: center;
 }
 /*
-* Leftside sub-menu
+* Leftside submenu
 */
-.sub-menu {
+.submenu {
     text-align: center;
 }
 
-.sub-menu li {
+.submenu li {
     line-height: 200%;
     color: #6E6E6E;
 }
@@ -113,7 +114,7 @@ i {
     display: none;
 }
 
-.sub-menu--selected-top {
+.submenu--selected-top {
     background-color: #E6DBFF;
     color: #6B00FF !important;
 }
