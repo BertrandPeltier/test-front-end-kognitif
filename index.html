@@ -44,8 +44,33 @@
                         <a class="leftside-item leftside-item--top" href=""><i class="material-icons">sort</i>Gantt</a>
                     </nav>
                     <nav>
-                        <a class="leftside-item" href=""><i class="material-icons is-colored is-yellow">groups</i>Relation client</a>
-                        <a class="leftside-item" href=""><i class="material-icons is-colored is-green">auto_awesome_motion</i>Gestion de projet</a>
+                        <a class="leftside-item" href="" target="customer"><i class="material-icons is-colored is-yellow">groups</i>Relation client</a>
+                        <!-- sub-menu -->
+                        <nav class="submenu submenu--bottom is-hidden" id="customer">
+                            <ul>
+                                <a href=""><li>Opportunités</li></a>
+                                <a href=""><li>Prospects</li></a>
+                                <a href=""><li>Produits</li></a>
+                            </ul>
+                        </nav>
+                        <a class="leftside-item" href="" target="project"><i class="material-icons is-colored is-green">auto_awesome_motion</i>Gestion de projet</a>
+                        <!-- sub-menu -->
+                        <nav class="submenu submenu--bottom is-hidden" id="project">
+                            <ul>
+                                <a href="" target="sub-project"><li>Projets</li></a>
+                                    <!-- sub-menu -->
+                                    <nav class="submenu2" id="sub-project">
+                                        <ul>
+                                            <a href=""><li>Ajouter</li></a>
+                                            <a href=""><li>Catégorie de projet<i class="material-icons is-small">chevron_right</i></li></a>
+                                            <a href=""><li>Tous les projets</li></a>
+                                        </ul>
+                                    </nav>
+                                <a href=""><li>Fichiers</li></a>
+                                <a href=""><li>Congés</li></a>
+                                <a href=""><li>Annonces</li></a>
+                            </ul>
+                        </nav>
                         <a class="leftside-item" href=""><i class="material-icons is-colored is-orange">receipt_long</i>Stock & Facturation</a>
                         <a class="leftside-item" href=""><i class="material-icons is-colored is-blue">euro</i>Coordination financière</a>
                         <a class="leftside-item" href=""><i class="material-icons is-colored is-darkblue">manage_accounts</i>Ressources humaines</a>

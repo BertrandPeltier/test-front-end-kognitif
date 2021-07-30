@@ -21,6 +21,8 @@ const app = {
                 // Show sub-menu
                 if (leftsideItem.target) {
                     app.showSubmenu(leftsideItem.target);
+                } else {
+                    app.unselectPreviousSubmenu();
                 }
             })
         })

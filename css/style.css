@@ -27,6 +27,11 @@ i {
     padding: 5px;
 }
 
+.is-small {
+    margin-left: 1rem;
+    font-size: 1rem !important;
+}
+
 .is-colored {
     color: #FFF;
     border-radius: 5px;
@@ -101,9 +106,6 @@ i {
 /*
 * Leftside submenu
 */
-.submenu {
-    text-align: center;
-}
 
 .submenu li {
     line-height: 200%;
@@ -114,9 +116,22 @@ i {
     display: none;
 }
 
+.submenu--top {
+    text-align: center;
+}
+
 .submenu--selected-top {
     background-color: #E6DBFF;
     color: #6B00FF !important;
+}
+
+.submenu--bottom {
+    margin-left: 3rem;
+}
+
+.submenu2 li {
+    display: flex;
+    align-items: center;
 }
 
 /*
