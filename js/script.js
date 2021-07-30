@@ -15,20 +15,28 @@ const app = {
         leftsideItems.forEach(leftsideItem => {
             leftsideItem.addEventListener('click', (event) => {
                 // Reset previous selected item
-                const previousSelectedItem = document.querySelector('.leftside-item--selected');
-                if (previousSelectedItem) {
-                    previousSelectedItem.classList.remove('leftside-item--selected');
-                    if (previousSelectedItem.classList.contains('leftside-item--top')) {
-                        previousSelectedItem.classList.remove('leftside-item--selected-blue');
-                    }
-                }
+                app.unselectOtherItem();
                 // Apply selected style
-                leftsideItem.classList.add('leftside-item--selected');
-                if (leftsideItem.classList.contains('leftside-item--top')) {
-                    leftsideItem.classList.add('leftside-item--selected-blue');
-                }
+                app.stylingSelectedItem(leftsideItem);
             })
         })
+    },
+
+    unselectOtherItem: () => {
+        const previousSelectedItem = document.querySelector('.leftside-item--selected');
+        if (previousSelectedItem) {
+            previousSelectedItem.classList.remove('leftside-item--selected');
+            if (previousSelectedItem.classList.contains('leftside-item--top')) {
+                previousSelectedItem.classList.remove('leftside-item--selected-blue');
+            }
+        }
+    },
+
+    stylingSelectedItem: (item) => {
+        item.classList.add('leftside-item--selected');
+        if (item.classList.contains('leftside-item--top')) {
+            item.classList.add('leftside-item--selected-blue');
+        }
     }
 };
 
