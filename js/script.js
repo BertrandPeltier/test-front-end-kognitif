@@ -14,25 +14,34 @@ const app = {
         const leftsideItems = document.querySelectorAll('.leftside-item');
         leftsideItems.forEach(leftsideItem => {
             leftsideItem.addEventListener('click', (event) => {
-                // Reset previous selected item
-                app.unselectPreviousItem();
-                // Apply selected style
-                app.stylingSelectedItem(leftsideItem);
-                // Show sub-menu
-                if (leftsideItem.target) {
-                    app.showSubmenu(leftsideItem.target);
+                if (leftsideItem.classList.contains('leftside-item--selected')) {
+                    app.unselectPreviousItem(event);
+                    if (leftsideItem.target) {
+                        app.unselectPreviousSubmenu();
+                        if (leftsideItem.classList.contains('leftside-item--bottom')) {
+                            leftsideItem.querySelectorAll('i')[1].innerText = 'chevron_right';
+                        }
+                    }
                 } else {
-                    app.unselectPreviousSubmenu();
+                    app.unselectPreviousItem(event);
+                    app.stylingSelectedItem(leftsideItem);
+                    if (leftsideItem.target) {
+                        app.showSubmenu(leftsideItem.target);
+                    } else {
+                        app.unselectPreviousSubmenu();
+                    }
                 }
             })
         })
     },
 
-    unselectPreviousItem: () => {
+    unselectPreviousItem: (event) => {
         const previousSelectedItem = document.querySelector('.leftside-item--selected');
         if (previousSelectedItem) {
             previousSelectedItem.classList.remove('leftside-item--selected');
-            if (previousSelectedItem.classList.contains('leftside-item--top')) {
+            if (previousSelectedItem.classList.contains('leftside-item--bottom')) {
+                previousSelectedItem.querySelectorAll('i')[1].innerText = 'chevron_right';
+            } else if (previousSelectedItem.classList.contains('leftside-item--top')) {
                 previousSelectedItem.classList.remove('leftside-item--selected-blue');
             }
         }
@@ -42,6 +51,9 @@ const app = {
         item.classList.add('leftside-item--selected');
         if (item.classList.contains('leftside-item--top')) {
             item.classList.add('leftside-item--selected-blue');
+        }
+        if (item.classList.contains('leftside-item--bottom')) {
+            item.querySelectorAll('i')[1].innerText = 'expand_more';
         }
     },
 

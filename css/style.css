@@ -85,6 +85,14 @@ i {
     color: #6E6E6E;
     padding-left: 1rem;
 }
+.leftside-item div {
+    display: flex;
+    align-items: center;
+}
+
+.leftside-item--bottom {
+    justify-content: space-between;
+}
 
 .leftside-item--selected {
     font-weight: bold;
