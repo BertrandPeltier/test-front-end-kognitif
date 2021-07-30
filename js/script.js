@@ -22,7 +22,7 @@ const app = {
                         previousSelectedItem.classList.remove('leftside-item--selected-blue');
                     }
                 }
-                // Apply selected css
+                // Apply selected style
                 leftsideItem.classList.add('leftside-item--selected');
                 if (leftsideItem.classList.contains('leftside-item--top')) {
                     leftsideItem.classList.add('leftside-item--selected-blue');

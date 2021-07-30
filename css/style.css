@@ -11,13 +11,43 @@
 }
 
 .leftside-header, .rightside-header {
-    height: 10%;
+    height: 12%;
 }
 
+/*
+* Material icons
+*/
 i {
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
     margin: 0.5rem 0;
+    padding: 5px;
 }
+
+.is-colored {
+    color: #FFF;
+    border-radius: 5px;
+}
+
+.is-yellow {
+    background-color: #fffb00;
+}
+
+.is-green {
+    background-color: #00FFC6;
+}
+
+.is-orange {
+    background-color: #FF5707;
+}
+
+.is-blue {
+    background-color: #00D8FC;
+}
+
+.is-darkblue {
+    background-color: #4829FF;
+}
+
 /*
 * Left side Navbar
 */
@@ -27,6 +57,10 @@ i {
     padding-left: 1rem;
     display: flex;
     flex-direction: column;
+}
+
+#kognitif-logo {
+    width: 60%;
 }
 
 .leftside-menus {
@@ -45,6 +79,7 @@ i {
 
 .leftside-item--selected {
     font-weight: bold;
+    color: rgba(0, 0, 0, 0.7);
 }
 .leftside-item--selected-blue {
     color: #6B00FF;
@@ -58,15 +93,6 @@ i {
     margin-left: -1rem;
     flex-grow: 1;
     text-align: center;
-}
-
-#kognitif-logo {
-    width: 60%;
-}
-
-.bg-test {
-    background-color: red;
-    padding: 5px;
 }
 
 /*
@@ -106,6 +132,7 @@ i {
 
 .account-icon {
     font-size: 4rem !important;
+    margin: 0;
 }
 
 
