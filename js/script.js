@@ -2,6 +2,7 @@ const app = {
     init: () => {
         app.noRefresh();
         app.leftsideItemAction();
+        app.projetSubmenuAction();
     },
 
     noRefresh: () => {
@@ -31,8 +32,8 @@ const app = {
                         app.unselectPreviousSubmenu();
                     }
                 }
-            })
-        })
+            });
+        });
     },
 
     unselectPreviousItem: (event) => {
@@ -101,28 +102,46 @@ const app = {
     },
 
     handleWithBottomSubmenu: (submenu) => {
-        const subItems = submenu.querySelectorAll('li');
-        const unselectOtherSubItems = (items) => {
-            items.forEach(item => {
-                if (item.classList.contains('submenu--selected-bottom')) {
-                    item.classList.remove('submenu--selected-bottom');
-                    item.firstChild.classList.add('is-grey');
-                    item.firstChild.classList.remove(`is-${item.parentNode.classList[0]}`);
-                }
-            });
-        };
-        unselectOtherSubItems(subItems);
-        subItems[0].classList.add('submenu--selected-bottom');
-        subItems[0].firstChild.classList.remove('is-grey');
-        subItems[0].firstChild.classList.add(`is-${subItems[0].parentNode.classList[0]}`);
-        subItems.forEach(subItem => {
-            subItem.addEventListener('click', () => {
-                unselectOtherSubItems(subItems);
-                subItem.classList.add('submenu--selected-bottom');
-                subItem.firstChild.classList.remove('is-grey');
-                subItem.firstChild.classList.add(`is-${subItems[0].parentNode.classList[0]}`);
+        const subItems = submenu.querySelectorAll('.submenu-item');
+        let startIndex = 0;
+        if (subItems[0].parentNode.id === "projet") {
+            startIndex = 1;
+        }
+        for (let index = startIndex; index < subItems.length; index++) {
+            subItems[index].addEventListener('click', () => {
+                app.unselectOtherBottomSubItems(subItems);
+                subItems[index].classList.add('submenu--selected-bottom');
+                subItems[index].firstChild.classList.remove('is-grey');
+                subItems[index].firstChild.classList.add(`is-${subItems[index].parentNode.classList[0]}`);
             })
-        })
+        }
+    },
+
+    unselectOtherBottomSubItems: (items) => {
+        items.forEach(item => {
+            if (item.classList.contains('submenu--selected-bottom')) {
+                item.classList.remove('submenu--selected-bottom');
+                item.firstChild.classList.add('is-grey');
+                item.firstChild.classList.remove(`is-${item.parentNode.classList[0]}`);
+            }
+        });
+        if(!document.getElementById('projet-submenu').classList.contains('is-hidden')) {
+            document.getElementById('projet-submenu').classList.add('is-hidden');
+        }
+    },
+
+    projetSubmenuAction: () => {
+        const projetElement = document.getElementById('projet');
+        projetElement.addEventListener('click', () => {
+            projetElement.classList.toggle('is-grey');
+            projetElement.classList.toggle('is-green');
+            app.toggleProjetSubmenu();
+        });
+    },
+
+    toggleProjetSubmenu: () =>  {
+        const submenu = document.getElementById('projet-submenu');
+        submenu.classList.toggle('is-hidden');
     }
 
 
