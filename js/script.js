@@ -102,10 +102,25 @@ const app = {
 
     handleWithBottomSubmenu: (submenu) => {
         const subItems = submenu.querySelectorAll('li');
+        const unselectOtherSubItems = (items) => {
+            items.forEach(item => {
+                if (item.classList.contains('submenu--selected-bottom')) {
+                    item.classList.remove('submenu--selected-bottom');
+                    item.firstChild.classList.add('is-grey');
+                    item.firstChild.classList.remove(`is-${item.parentNode.classList[0]}`);
+                }
+            });
+        };
+        unselectOtherSubItems(subItems);
+        subItems[0].classList.add('submenu--selected-bottom');
+        subItems[0].firstChild.classList.remove('is-grey');
+        subItems[0].firstChild.classList.add(`is-${subItems[0].parentNode.classList[0]}`);
         subItems.forEach(subItem => {
             subItem.addEventListener('click', () => {
+                unselectOtherSubItems(subItems);
+                subItem.classList.add('submenu--selected-bottom');
                 subItem.firstChild.classList.remove('is-grey');
-                subItem.firstChild.classList.add('is-yellow');
+                subItem.firstChild.classList.add(`is-${subItems[0].parentNode.classList[0]}`);
             })
         })
     }
