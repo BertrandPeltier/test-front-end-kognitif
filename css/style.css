@@ -1,5 +1,5 @@
 html {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .main-content {
@@ -203,9 +203,11 @@ i {
     display: block;
 }
 
-.rightside-item:hover {
-    color: #000;
+.rightside-item i:hover {
+    color: #6B00FF;
+    background-color: #FFF;
     transition: all 0.5s ease-out;
+    border-radius: 50%;
 }
 
 .account-icon {
