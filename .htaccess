@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+DirectoryIndex index.html
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+Options All -Indexes
+ErrorDocument 404 /404.html
+</IfModule>
