@@ -2,7 +2,7 @@ const app = {
     init: () => {
         app.noRefresh();
         app.leftsideItemAction();
-        app.projetSubmenuAction();
+        app.projetListAction();
     },
 
     noRefresh: () => {
@@ -72,7 +72,6 @@ const app = {
             app.unselectPreviousSubmenu();
             submenu.classList.remove('is-hidden');
             submenu.classList.add('is-active');
-            // Submenu top
             if (submenu.classList.contains('submenu--top')) {
                 app.handleWithTopSubmenu(submenu);
             } else if (submenu.classList.contains('submenu--bottom')) {
@@ -103,49 +102,69 @@ const app = {
 
     handleWithBottomSubmenu: (submenu) => {
         const subItems = submenu.querySelectorAll('.submenu-item');
-        let startIndex = 0;
-        if (subItems[0].parentNode.id === "projet") {
-            startIndex = 1;
+        const unselectOtherSubItems = (items) => {
+            items.forEach(item => {
+                if (item.classList.contains('submenu--selected-bottom')) {
+                    item.classList.remove('submenu--selected-bottom');
+                    item.firstChild.classList.add('is-grey');
+                    item.firstChild.classList.remove(`is-${item.parentNode.classList[0]}`);
+                }
+
+            });
+            const projetSubmenu = document.getElementById('projet-submenu');
+            if (!projetSubmenu.classList.contains('is-hidden')) {
+                projetSubmenu.classList.add('is-hidden');
+            };
+        };
+        unselectOtherSubItems(subItems);
+        subItems.forEach(subItem => {
+            subItem.addEventListener('click', (event) => {
+                unselectOtherSubItems(subItems);
+                app.subItemAction(event);
+            });
+        });
+    },
+
+    subItemAction: (event) => {
+        const subItem = event.currentTarget;
+        subItem.classList.add('submenu--selected-bottom');
+        subItem.firstChild.classList.remove('is-grey');
+        subItem.firstChild.classList.add(`is-${subItem.parentNode.classList[0]}`);
+        if (subItem.parentNode.id === "projet") {
+            const projetSubmenu = document.getElementById('projet-submenu');
+            projetSubmenu.classList.remove('is-hidden');
         }
-        for (let index = startIndex; index < subItems.length; index++) {
-            subItems[index].addEventListener('click', () => {
-                app.unselectOtherBottomSubItems(subItems);
-                subItems[index].classList.add('submenu--selected-bottom');
-                subItems[index].firstChild.classList.remove('is-grey');
-                subItems[index].firstChild.classList.add(`is-${subItems[index].parentNode.classList[0]}`);
+    },
+
+    projetListAction: () => {
+        const projetList = document.querySelectorAll('.projet-list');
+        const unselectItems = () => {
+            projetList.forEach(item => {
+                item.firstChild.classList.remove('is-bold');
             })
         }
+        projetList.forEach(item => {
+            let chevron = -1;
+            item.addEventListener('click', () => {
+                unselectItems();
+                item.firstChild.classList.add('is-bold');
+                if (item.id === "projet-dropdown") {
+                    chevron = chevron * -1;
+                    switch (chevron) {
+                        case 1:
+                            item.firstChild.children[0].innerText = "expand_more";
+                            break;
+                        case -1:
+                            item.firstChild.children[0].innerText = "chevron_right";
+                    }
+                    const dropdownList = document.querySelectorAll('.dropdown');
+                    dropdownList.forEach(dropdown => {
+                        dropdown.classList.toggle('is-hidden');
+                    })
+                }
+            })
+        })
     },
-
-    unselectOtherBottomSubItems: (items) => {
-        items.forEach(item => {
-            if (item.classList.contains('submenu--selected-bottom')) {
-                item.classList.remove('submenu--selected-bottom');
-                item.firstChild.classList.add('is-grey');
-                item.firstChild.classList.remove(`is-${item.parentNode.classList[0]}`);
-            }
-        });
-        if(!document.getElementById('projet-submenu').classList.contains('is-hidden')) {
-            document.getElementById('projet-submenu').classList.add('is-hidden');
-        }
-    },
-
-    projetSubmenuAction: () => {
-        const projetElement = document.getElementById('projet');
-        projetElement.addEventListener('click', () => {
-            projetElement.classList.toggle('is-grey');
-            projetElement.classList.toggle('is-green');
-            app.toggleProjetSubmenu();
-        });
-    },
-
-    toggleProjetSubmenu: () =>  {
-        const submenu = document.getElementById('projet-submenu');
-        submenu.classList.toggle('is-hidden');
-    }
-
-
-
 };
 
 document.addEventListener('DOMContentLoaded', app.init);
